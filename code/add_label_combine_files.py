@@ -1,8 +1,8 @@
-# from pandas import Series
-# import string
-
 import pandas as pd
 import glob
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 def get_file_name(file_names):
     namelist=[]
@@ -10,26 +10,18 @@ def get_file_name(file_names):
         namelist.append(filename.split('.')[0].split('/')[1])
     return namelist
 
-# add subreddit names to each file as label
 def add_subreddit_and_combine(file_names, names):
-    frame = pd.DataFrame()
+    # frame = pd.DataFrame()
     list_ = []
     for i in xrange(len(file_names)):
-        df = pd.read_csv(file_names[i], index_col=False, header=0)
-        df['comments_replies'] = df['comments_replies'].dropna()
+        df = pd.read_csv(file_names[i], index_col=False, encoding='utf8', header=0, engine='python')
+        df['comments_replies'] = df['comments_replies'].fillna('')
         df['target'] = names[i]
-        print df.columns
-        #print df['target'].head(2)
         list_.append(df)
     frame = pd.concat(list_)
-    frame.to_csv('dataall/allfiles1.csv', index=False) #index=False will not give you Unnamed:0 column.
-    print frame.columns
-    pass
+    frame.to_csv('data/allfilesfinal55.csv', index=False)
 
 def __name__=='__main__':
-    file_names = glob.glob('datacopy/*')
+    file_names = glob.glob('datanew/*.csv')
     names = get_file_name(file_names)
     add_subreddit_and_combine(file_names,names)
-
-
-

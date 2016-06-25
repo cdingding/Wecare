@@ -1,7 +1,3 @@
-
-# import os
-# from nltk.stem.snowball import SnowballStemmer
-
 import praw
 import pandas as pd
 import sys
@@ -26,26 +22,23 @@ def get_all_comments(list_of_comments):
     comments_replies_str=', '.join(comments_replies)
     return comments_replies_str
 
-if __name__=='__main__':
-    file_names = glob.glob('data/*')
-    names = get_file_name(file_names)
-
+def save_to_csv(file_names, names):
     for i in xrange(len(file_names)):
         df = pd.read_csv(file_names[i], index_col=False, header=0)
         df['comments_replies']= None
-        r = praw.Reddit(user_agent='my_cool_application') #Create the Reddit object (requires a user-agent)
-        for j in xrange(df['permalink'].shape[0]): ##xrange(df['permalink'].shape[0]):
+        r = praw.Reddit(user_agent='my_cool_application')
+        for j in xrange(df['permalink'].shape[0]):
             this_url = df.ix[j,'permalink']
             this_url.replace('http','https')
-            # try:
-            #     submission = r.get_submission(url=df.ix[j,'permalink'])
-            # except Exception as e:
-            #     print e.message
-            #     print df.ix[j,'permalink']
             submission = r.get_submission(url=this_url)
             result = ''
             comments= submission.comments
             result += get_all_comments(comments)
             df.ix[j,'comments_replies'] = result
+        print '%d %s.csv' % (i, names[i])
         df.to_csv('datanew/%s.csv'% names[i],index=False)
-        print i
+
+if __name__=='__main__':
+    file_names = glob.glob('data/*')
+    names = get_file_name(file_names)
+    save_to_csv(file_names, names)
