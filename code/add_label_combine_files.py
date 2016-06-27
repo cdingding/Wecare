@@ -21,7 +21,7 @@ def add_subreddit_and_combine(file_names, names):
     frame = pd.concat(list_)
     frame.to_csv('data/allfilesfinal55.csv', index=False)
 
-def __name__=='__main__':
+if __name__=='__main__':
     file_names = glob.glob('datanew/*.csv')
     names = get_file_name(file_names)
     add_subreddit_and_combine(file_names,names)
