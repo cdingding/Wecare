@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.decomposition import TruncatedSVD, NMF
 from numpy import array, matrix, linalg
-from nltk.stem.porter import PorterStemmer
+# from nltk.stem.porter import PorterStemmer
 from build_model import remove_punc_and_digits, LemmaTokenizer #import from build_model.py
 
 def reconst_mse(target, left, right):
@@ -18,7 +18,7 @@ def describe_nmf_results(document_term_mat, W, H, n_top_words = 15):
 if __name__ == "__main__":
     n_features = 1000
     n_topics = 5
-    STEMMER = PorterStemmer()
+    # STEMMER = PorterStemmer()
 
     data = pd.read_csv('datacopy/history.csv')
     doc_bodies = data['comments_replies'].apply(remove_punc_and_digits)
