@@ -1,4 +1,4 @@
-# Wecaredata
+# Wecaredata, use it like Google!
 
 ### Web app address: http://www.wecaredata.com
 ![alt text](https://github.com/cdingding/Wecare/blob/master/statics-11-2016/app_interface.png "Wecaredata APP Interface")
