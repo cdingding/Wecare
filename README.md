@@ -1,5 +1,5 @@
 # Wecaredata. Use it like Google! 
-# Give it more (texts), you get more (precise)!
+## Give it more (texts), you get more (precise)!
 
 ### Web app address: http://www.wecaredata.com
 ![alt text](https://github.com/cdingding/Wecare/blob/master/statics-11-2016/app_interface.png "Wecaredata APP Interface")
