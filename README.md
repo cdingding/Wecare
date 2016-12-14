@@ -15,10 +15,7 @@ Please contact me if you have any feedback by the following email:
 memsding@gmail.com
 
 Happy 21st century! 
-
 Charlie (Changsong) Ding
-
 https://github.com/cdingding
-
 https://www.linkedin.com/in/changsongding
 
